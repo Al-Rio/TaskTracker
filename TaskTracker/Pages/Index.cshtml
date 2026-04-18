@@ -1,0 +1,50 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<!-- Welcome to the Task Tracker System header -->
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Task Tracker System</h1>
+    <p><a href="/Assignment">Create New Task</a>.</p>
+</div>
+
+<h1>Recent Tasks:</h1>
+<!-- Display the list of Assignments in a table format -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Assignment Name</th>
+            <th>Project</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <!-- Check if there are assignments to display -->
+        @if (Model.Assignments != null)
+        {
+            foreach (var p in Model.Assignments)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.AssignmentName</td>
+                    <td>@p.Project</td>
+                    <td>@p.Priority</td>
+                    <td>@p.DueDate</td>
+                    <td>@p.Description</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <!-- Display a message if no Tasks are found -->
+                <td>No Tasks found !!!</td>
+            </tr>
+        }
+    </tbody>
+</table>

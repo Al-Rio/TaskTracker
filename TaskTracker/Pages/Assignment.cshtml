@@ -1,0 +1,73 @@
+﻿@page
+@model TaskTracker.Pages.AssignmentModel
+@{
+    // Page title 
+    ViewData["Title"] = "Create New Task";
+}
+<!-- Display the page title -->
+<h1>@ViewData["Title"]</h1>
+
+<!-- Form for adding a new task/assignment -->
+<form method="post" class ="row g-3">
+    <div class="form-group">
+        <!-- Label and input for assignment name with validation message -->
+        <label asp-for="Input.AssignmentName">Assignment Name *</label>
+        <input asp-for="Input.AssignmentName" class="form-control" />
+        <span asp-validation-for="Input.AssignmentName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <!-- Label and input for assignment's project with validation message -->
+        <label asp-for="Input.Project">Project *</label>
+        <input asp-for="Input.Project" class="form-control" />
+        <span asp-validation-for="Input.Project" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <!-- Label and input for priority level with validation message -->
+        <label asp-for="Input.Priority">Priority *</label>
+        <input asp-for="Input.Priority" class="form-control" />
+        <span asp-validation-for="Input.Priority" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <!-- Label and input for the Due Date with validation message -->
+        <label asp-for="Input.DueDate">Due Date: *</label>
+        <input asp-for="Input.DueDate" class="form-control" value = "" placeholder="MM/DD/YYYY" />
+        <span asp-validation-for="Input.DueDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <!-- Label and input for assignment description with validation message -->
+        <label asp-for="Input.Description"></label>
+        <input asp-for="Input.Description" class="form-control" />
+        <span asp-validation-for="Input.Description" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-lg btn-info">Save Task</button>
+</form>
+<!-- Display the list of Assignments in a table format -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Assignment Name</th>
+            <th>Project</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+    <!-- Check if there are Assignments to display -->
+    @if (Model.Assignments != null)
+    {
+        @foreach (var p in Model.Assignments)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.AssignmentName</td>
+                <td>@p.Project</td>
+                <td>@p.Priority</td>
+                <td>@p.DueDate</td>
+                <td>@p.Description</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
