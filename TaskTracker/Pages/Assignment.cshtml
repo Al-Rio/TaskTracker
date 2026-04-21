@@ -1,48 +1,65 @@
 ﻿@page
 @model TaskTracker.Pages.AssignmentModel
 @{
-    // Page title 
+    // Page title
     ViewData["Title"] = "Create New Task";
 }
 <!-- Display the page title -->
 <h1>@ViewData["Title"]</h1>
 
 <!-- Form for adding a new task/assignment -->
-<form method="post" class ="row g-3">
-    <div class="form-group">
+<form method="post" asp-page-handler="Save" class="row g-3" id="assignmentForm">
+    <input asp-for="Input.Id" type="hidden" id="Input_Id" />
+    <div class="form-group col-12">
         <!-- Label and input for assignment name with validation message -->
-        <label asp-for="Input.AssignmentName">Assignment Name *</label>
+        <label asp-for="Input.AssignmentName">Assignment Name: *</label>
         <input asp-for="Input.AssignmentName" class="form-control" />
         <span asp-validation-for="Input.AssignmentName" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
         <!-- Label and input for assignment's project with validation message -->
-        <label asp-for="Input.Project">Project *</label>
+        <label asp-for="Input.Project">Project: *</label>
         <input asp-for="Input.Project" class="form-control" />
         <span asp-validation-for="Input.Project" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <!-- Label and input for priority level with validation message -->
-        <label asp-for="Input.Priority">Priority *</label>
-        <input asp-for="Input.Priority" class="form-control" />
+    <div class="form-group col-md-3">
+        <!-- Label and dropdown for priority level with validation message -->
+        <label asp-for="Input.Priority" class="form-label">Priority *</label>
+        <select asp-for="Input.Priority" class="form-select">
+            <option value=""> Select The Priority Level </option>
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+        </select>
         <span asp-validation-for="Input.Priority" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-3">
         <!-- Label and input for the Due Date with validation message -->
-        <label asp-for="Input.DueDate">Due Date: *</label>
-        <input asp-for="Input.DueDate" class="form-control" value = "" placeholder="MM/DD/YYYY" />
+        <label asp-for="Input.DueDate" class="form-label">Due Date *</label>
+        <input asp-for="Input.DueDate" type="date" class="form-control" />
         <span asp-validation-for="Input.DueDate" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group col-12">
         <!-- Label and input for assignment description with validation message -->
-        <label asp-for="Input.Description"></label>
-        <input asp-for="Input.Description" class="form-control" />
+        <label asp-for="Input.Description">Description:</label>
+        <textarea asp-for="Input.Description" class="form-control" rows = "4"></textarea>
         <span asp-validation-for="Input.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <!-- Label and dropdown for the assignment status with validation message -->
+        <label asp-for="Input.Status" class="form-label">Status</label>
+        <select asp-for="Input.Status" class="form-select">
+            <option value=""> Select The Status </option>
+            <option>Open</option>
+            <option>In Progress</option>
+            <option>Done</option>
+        </select>
+        <span asp-validation-for="Input.Status" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-lg btn-info">Save Task</button>
 </form>
 <!-- Display the list of Assignments in a table format -->
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Id</th>
@@ -51,23 +68,40 @@
             <th>Priority</th>
             <th>Due Date</th>
             <th>Description</th>
+            <th>Status</th>
         </tr>
     </thead>
     <tbody>
-    <!-- Check if there are Assignments to display -->
+        <!-- Check if there are Assignments to display -->
     @if (Model.Assignments != null)
     {
-        @foreach (var p in Model.Assignments)
+        foreach (var p in Model.Assignments)
         {
             <tr>
                 <td>@p.Id</td>
                 <td>@p.AssignmentName</td>
                 <td>@p.Project</td>
                 <td>@p.Priority</td>
-                <td>@p.DueDate</td>
+                <td>@p.DueDate.ToString("MM/dd/yyyy")</td>
                 <td>@p.Description</td>
+                <td>@p.Status</td>
+                <td>
+                    <!-- Server-Side Edit navigates to the same page with Edit handler and route id -->
+                    <a class="btn btn-sm btn-outline-primary"
+                       asp-page="./Assignment" asp-page-handler="Edit" asp-route-id="@p.Id">Edit</a>
+
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@p.Id" style="display:inline">
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
         }
+    }
+    else
+    {
+        <tr>
+            <td>No assignments found</td>
+        </tr>
     }
     </tbody>
 </table>
