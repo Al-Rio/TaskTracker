@@ -137,6 +137,7 @@ namespace TaskTracker.Pages
             {
                 _context.Assignments.Remove(entity);
                 await _context.SaveChangesAsync();
+                TempData["ToastMessage"] = "The Assignment was deleted successfully.";
             }
             return RedirectToPage();
         }
