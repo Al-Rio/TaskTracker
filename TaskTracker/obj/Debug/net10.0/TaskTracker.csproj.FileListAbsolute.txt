@@ -138,7 +138,6 @@
 /workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/scopedcss/Pages/Shared/_Layout.cshtml.rz.scp.css
 /workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/scopedcss/bundle/TaskTracker.styles.css
 /workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/scopedcss/projectbundle/TaskTracker.bundle.scp.css
-/workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/compressed/r2kr2md7s5-{0}-b9sayid5wm-b9sayid5wm.gz
 /workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/compressed/3w3525igm7-{0}-61n19gt1b8-61n19gt1b8.gz
 /workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/compressed/5wfxfhyhg2-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 /workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/compressed/9q95f6cjnh-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -213,3 +212,4 @@
 /workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/TaskTracker.pdb
 /workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/TaskTracker.genruntimeconfig.cache
 /workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/ref/TaskTracker.dll
+/workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/compressed/r2kr2md7s5-{0}-afpc7af0zn-afpc7af0zn.gz
