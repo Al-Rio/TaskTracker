@@ -56,22 +56,28 @@
         </select>
         <span asp-validation-for="Input.Status" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-lg btn-info navhov curved">Save Task</button>
+    <div class ="text-center" style ="padding-top: 19px; padding-bottom: 45px;">
+    <button type="submit" class="btn btn-lg btn-info navhov curved w-75">Save Task</button>
+    </div>
 </form>
 <!-- Display the list of Assignments in a table format -->
-<table class="table table-striped mt-4">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Assignment Name</th>
-            <th>Project</th>
-            <th>Priority</th>
-            <th>Due Date</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
+<div class="container">
+    <div class="card glass">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Assignment Name</th>
+                    <th>Project</th>
+                    <th>Priority</th>
+                    <th>Due Date</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+        </div>
+    </div>
     <tbody>
         <!-- Check if there are Assignments to display -->
         @if (Model.Assignments != null)
@@ -91,7 +97,8 @@
                         <a class="btn btn-sm btn-outline-primary" asp-page="./Assignment" asp-page-handler="Edit"
                            asp-route-id="@p.Id">Edit</a>
 
-                        <!-- Delete button that opens a confirmation modal. (data-id) is used to pass the id to the modal -->
+                     <!-- Delete button that opens a confirmation modal -->
+                     <!-- data-id is used to pass the id to the modal -->
                         <form method="post" asp-page-handler="Delete" asp-route-id="@p.Id" style="display:inline"
                               data-confirm="Are you sure you want Delete this assignment?">
                             <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
@@ -100,6 +107,7 @@
                         <div class="position-fixed bottom-0 end-0 p-3" style="z-index:1080;">
                             @if (TempData["ToastMessage"] is string toastMsg && !string.IsNullOrEmpty(toastMsg))
                             {
+                                // display the alert message for 3 seconds at the bottom right corner
                                 <div id="simpleToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
                                      data-bs-delay="3000">
                                     <div class="toast-body">@toastMsg</div>
@@ -120,7 +128,7 @@
 </table>
 
 
-
+<!--Toast alert script-->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Show server-side toast if present

@@ -43,8 +43,13 @@ body {
 }
 
 .navhov:hover {
-    background-color: #1e9130;
+    background-color: #CEC8F3;
     border-radius: 22px;
     transition: background-color .5s ease-in-out, border-radius .2s ease-in-out;
 }
 
+.glass {
+  margin-bottom:50px;
+  padding:10px; 
+  background-color: rgba(255,255,255,0.6)"
+}

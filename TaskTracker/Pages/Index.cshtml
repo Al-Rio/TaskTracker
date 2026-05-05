@@ -6,12 +6,12 @@
 <!-- Welcome to the Task Tracker System header -->
 <div class="text-center">
     <h1 class="display-4">Welcome to the Task Tracker System</h1>
-    <p><a class="btn btn-lg btn-info curved navhov" href="/Assignment">Create New Task</a></p>
+    <p><a class="btn btn-lg btn-info curved navhov w-75" href="/Assignment">Create New Task</a></p>
 </div>
 
 <h1>Recent Tasks:</h1>
 <!-- Display the list of Assignments in a table format -->
-<table class="table">
+<table class="table table-striped glass">
     <thead>
         <tr>
             <th>Id</th>
@@ -20,7 +20,47 @@
             <th>Priority</th>
             <th>Due Date</th>
             <th>Description</th>
-            <th>Status</th>
+            <th>
+                <form method="get" class="mb-3 d-flex align-items-center">
+                    <label>Status</label>
+                    <!-- Filter by status -->
+                    <select name="status" class="form-select w-auto" onchange="this.form.submit()">
+                        <!-- Render options with if based on the status  -->
+                        <option value=""> Select The Status </option>
+
+                        @if (Model.Status == "Open")
+                        {
+                            <option value="Open" selected>Open</option>
+                        }
+                        else
+                        {
+                            <option value="Open">Open</option>
+                        }
+
+                        @if (Model.Status == "InProgress")
+                        {
+                            <option value="InProgress" selected>In Progress</option>
+                        }
+                        else
+                        {
+                            <option value="InProgress">In Progress</option>
+                            
+                        }
+                        <a class="btn btn-secondary me-2" asp-page="/Index">Back</a>
+
+                        @if (Model.Status == "Done")
+                        {
+                            <option value="Done" selected>Done</option>
+                        }
+                        else
+                        {
+                            <option value="Done">Done</option>
+                            
+                        }
+                        <a class="btn btn-secondary me-2" asp-page="/Index">Back</a>
+                    </select>
+                </form>
+            </th>
         </tr>
     </thead>
     <tbody>

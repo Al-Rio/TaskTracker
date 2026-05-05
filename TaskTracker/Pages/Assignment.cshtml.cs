@@ -108,6 +108,7 @@ namespace TaskTracker.Pages
 
                 // SaveChangesAsync will persist modifications
                 await _context.SaveChangesAsync();
+                TempData["ToastMessage"] = "The Assignment was Updated successfully.";
             }
             else
             {
@@ -124,6 +125,7 @@ namespace TaskTracker.Pages
 
                 _context.Assignments.Add(entity);
                 await _context.SaveChangesAsync();
+                TempData["ToastMessage"] = "The Assignment was Added Successfully.";
             }
 
             return RedirectToPage();
