@@ -48,8 +48,7 @@ body {
     transition: background-color .5s ease-in-out, border-radius .2s ease-in-out;
 }
 
-.glass {
+.padd {
   margin-bottom:50px;
   padding:10px; 
-  background-color: rgba(255,255,255,0.6)"
 }

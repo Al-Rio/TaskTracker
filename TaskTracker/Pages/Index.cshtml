@@ -8,85 +8,123 @@
     <h1 class="display-4">Welcome to the Task Tracker System</h1>
     <p><a class="btn btn-lg btn-info curved navhov w-75" href="/Assignment">Create New Task</a></p>
 </div>
-
+<div class="mb-3">
+    <span class="me-3"><strong>Total tasks:</strong> @Model.TotalCount</span>
+</div>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card curved"
+                 style="margin-top:5px; margin-bottom:8px; padding:10px; background-color: rgba(255,255,255,0.6)">
+                <div class="card-body">
+                    <div class="card-title"><span><strong><h4>Open Tasks</h4></strong></span>
+                        <strong><h4>@Model.OpenCount (@Model.OpenPercent&#37;)</h4></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card curved"
+                 style="margin-top:5px; margin-bottom:8px; padding:10px; background-color: rgba(255,255,255,0.6)">
+                <div class="card-body">
+                    <div class="card-title"><span><strong><h4>In Progress</h4></strong></span>
+                        <strong><h5>@Model.InProgressCount (@Model.InProgressPercent&#37;)</h5></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card curved"
+                 style="margin-top:5px; margin-bottom:8px; padding:10px; background-color: rgba(255,255,255,0.6)">
+                <div class="card-body">
+                    <div class="card-title"><span><strong><h4>Done</h4></strong></span>
+                       <strong><h5>@Model.DoneCount (@Model.DonePercent&#37;)</h5></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <h1>Recent Tasks:</h1>
 <!-- Display the list of Assignments in a table format -->
-<table class="table table-striped glass">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Assignment Name</th>
-            <th>Project</th>
-            <th>Priority</th>
-            <th>Due Date</th>
-            <th>Description</th>
-            <th>
-                <form method="get" class="mb-3 d-flex align-items-center">
-                    <label>Status</label>
-                    <!-- Filter by status -->
-                    <select name="status" class="form-select w-auto" onchange="this.form.submit()">
-                        <!-- Render options with if based on the status  -->
-                        <option value=""> Select The Status </option>
-
-                        @if (Model.Status == "Open")
-                        {
-                            <option value="Open" selected>Open</option>
-                        }
-                        else
-                        {
-                            <option value="Open">Open</option>
-                        }
-
-                        @if (Model.Status == "InProgress")
-                        {
-                            <option value="InProgress" selected>In Progress</option>
-                        }
-                        else
-                        {
-                            <option value="InProgress">In Progress</option>
-                            
-                        }
-                        <a class="btn btn-secondary me-2" asp-page="/Index">Back</a>
-
-                        @if (Model.Status == "Done")
-                        {
-                            <option value="Done" selected>Done</option>
-                        }
-                        else
-                        {
-                            <option value="Done">Done</option>
-                            
-                        }
-                        <a class="btn btn-secondary me-2" asp-page="/Index">Back</a>
-                    </select>
-                </form>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        
-        <!-- Check if there are assignments to display -->
-        @if (Model.Assignments != null)
-        {
-            foreach (var p in Model.Assignments)
-            {
+<div class="container">
+    <div class="card padd">
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>@p.Id</td>
-                    <td>@p.AssignmentName</td>
-                    <td>@p.Project</td>
-                    <td>@p.Priority</td>
-                    <td>@p.DueDate</td>
-                    <td>@p.Description</td>
-                    <td>@p.Status</td>
+                    <th>Id</th>
+                    <th>Assignment Name</th>
+                    <th>Project</th>
+                    <th>Priority</th>
+                    <th>Due Date</th>
+                    <th>Description</th>
+                    <th>
+                        <form method="get" class="mb-3 d-flex align-items-center">
+                            <label>Status</label>
+                            <!-- Filter by status -->
+                            <select name="status" class="form-select w-auto" onchange="this.form.submit()">
+                                <!-- Render options with if statement , based on the status  -->
+                                <option value=""> Select The Status </option>
+
+                                @if (Model.Status == "Open")
+                                {
+                                    <option value="Open" selected>Open</option>
+                                }
+                                else
+                                {
+                                    <option value="Open">Open</option>
+                                }
+
+                                @if (Model.Status == "InProgress")
+                                {
+                                    <option value="InProgress" selected>In Progress</option>
+                                }
+                                else
+                                {
+                                    <option value="InProgress">In Progress</option>
+                            
+                                }
+
+                                @if (Model.Status == "Done")
+                                {
+                                    <option value="Done" selected>Done</option>
+                                }
+                                else
+                                {
+                                    <option value="Done">Done</option>
+                            
+                                }
+                            </select>
+                        </form>
+                    </th>
                 </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <!-- Display a message if no Tasks are found -->
-                <td>No Tasks found !!!</td>
-            </tr>
-        }
-    </tbody>
-</table>
+            </thead>
+            <tbody>
+        
+                <!-- Check if there are assignments to display -->
+                @if (Model.Assignments != null)
+                {
+                    foreach (var p in Model.Assignments)
+                    {
+                        <tr>
+                            <td>@p.Id</td>
+                            <td>@p.AssignmentName</td>
+                            <td>@p.Project</td>
+                            <td>@p.Priority</td>
+                            <td>@p.DueDate</td>
+                            <td>@p.Description</td>
+                            <td>@p.Status</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <!-- Display a message if no Tasks are found -->
+                        <td>No Tasks found !!!</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
