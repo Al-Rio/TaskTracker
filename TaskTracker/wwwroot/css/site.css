@@ -43,12 +43,40 @@ body {
 }
 
 .navhov:hover {
-    background-color: #CEC8F3;
+    background-color: #1dd4d1;
     border-radius: 22px;
     transition: background-color .5s ease-in-out, border-radius .2s ease-in-out;
 }
 
+/* Custom paddding*/
 .padd {
   margin-bottom:50px;
   padding:10px; 
+}
+
+@property --angle {
+  syntax: '<angle>';      /* degree value */
+  initial-value: 0deg;    /* The starting point */
+  inherits: false;        /* logic local to the element */
+}
+
+/* Animation is OFF by default */
+#lightFrame::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  z-index: -1;
+  background: conic-gradient(from var(--angle), #17d5f1, #0018ff, #006aff, #10e1fb);
+  border-radius: 22px;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease;
+  filter: blur(2px); /* Slight blur makes colors blend better */
+  opacity: 0.2; 
+  animation: spin 3s linear infinite;
+}
+
+/* Define the rotation animation */
+@keyframes spin {
+  from { --angle: 0deg; }
+  to { --angle: 360deg; }
 }

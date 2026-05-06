@@ -57,7 +57,7 @@
         <span asp-validation-for="Input.Status" class="text-danger"></span>
     </div>
     <div class ="text-center" style ="padding-top: 19px; padding-bottom: 45px;">
-    <button type="submit" class="btn btn-lg btn-info navhov curved w-75">Save Task</button>
+    <button type="submit" id ="lightFrame" class="btn btn-lg btn-info curved navhov w-75"><strong>Save Task</strong></button>
     </div>
 </form>
 <!-- Display the list of Assignments in a table format -->
@@ -94,7 +94,7 @@
                     <td>@p.Status</td>
                     <td>
                         <!-- Server-Side Edit navigates to the same page with Edit handler and route id -->
-                        <a class="btn btn-sm btn-outline-primary" asp-page="./Assignment" asp-page-handler="Edit"
+                        <a class="btn btn-sm btn-outline-primary" style="margin-bottom:5px;" asp-page="./Assignment" asp-page-handler="Edit"
                            asp-route-id="@p.Id">Edit</a>
 
                      <!-- Delete button that opens a confirmation modal -->
@@ -108,7 +108,7 @@
                             @if (TempData["ToastMessage"] is string toastMsg && !string.IsNullOrEmpty(toastMsg))
                             {
                                 // display the alert message for 3 seconds at the bottom right corner
-                                <div id="simpleToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+                                <div id="simpleToast" class="toast text-bg-success lightFrame" role="alert" aria-live="assertive" aria-atomic="true"
                                      data-bs-delay="3000">
                                     <div class="toast-body">@toastMsg</div>
                                 </div>

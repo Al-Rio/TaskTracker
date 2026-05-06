@@ -5,43 +5,56 @@
 }
 <!-- Welcome to the Task Tracker System header -->
 <div class="text-center">
-    <h1 class="display-4">Welcome to the Task Tracker System</h1>
-    <p><a class="btn btn-lg btn-info curved navhov w-75" href="/Assignment">Create New Task</a></p>
+    <h1 class="display-4"><strong>Welcome to the Task Tracker System</strong></h1>
+    <p><a id ="lightFrame" class="btn btn-lg btn-info curved navhov w-75" href="/Assignment">Create New Task</a></p>
 </div>
-<div class="mb-3">
-    <span class="me-3"><strong>Total tasks:</strong> @Model.TotalCount</span>
-</div>
+
 <div class="container text-center">
     <div class="row">
         <div class="col-md-4">
             <div class="card curved"
                  style="margin-top:5px; margin-bottom:8px; padding:10px; background-color: rgba(255,255,255,0.6)">
                 <div class="card-body">
-                    <div class="card-title"><span><strong><h4>Open Tasks</h4></strong></span>
-                        <strong><h4>@Model.OpenCount (@Model.OpenPercent&#37;)</h4></strong>
+                    <div class="card-title"><span><strong>
+                        <h4>Open Tasks</h4>
+                    </strong></span>
+                    <strong>
+                        <h4>@Model.OpenCount (@Model.OpenPercent&#37;)</h4>
+                    </strong>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card curved"
-                 style="margin-top:5px; margin-bottom:8px; padding:10px; background-color: rgba(255,255,255,0.6)">
+                style="margin-top:5px; margin-bottom:8px; padding:10px; background-color: rgba(255,255,255,0.6)">
                 <div class="card-body">
-                    <div class="card-title"><span><strong><h4>In Progress</h4></strong></span>
-                        <strong><h5>@Model.InProgressCount (@Model.InProgressPercent&#37;)</h5></strong>
+                    <div class="card-title"><span><strong>
+                        <h4>In Progress</h4>
+                        </strong></span>
+                        <strong>
+                        <h5>@Model.InProgressCount (@Model.InProgressPercent&#37;)</h5>
+                        </strong>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card curved"
-                 style="margin-top:5px; margin-bottom:8px; padding:10px; background-color: rgba(255,255,255,0.6)">
+            <div class="card curved" style="margin-top:5px; margin-bottom:8px; padding:10px; background-color: rgba(255,255,255,0.6)">
                 <div class="card-body">
-                    <div class="card-title"><span><strong><h4>Done</h4></strong></span>
-                       <strong><h5>@Model.DoneCount (@Model.DonePercent&#37;)</h5></strong>
+                    <div class="card-title"><span><strong>
+                        <h4>Done</h4>
+                    </strong></span>
+                        <strong>
+                        <h5>@Model.DoneCount (@Model.DonePercent&#37;)</h5>
+                        </strong>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div>
+        <span class="me-3"><strong>Total tasks:</strong> @Model.TotalCount</span>
         </div>
     </div>
 </div>
@@ -59,12 +72,12 @@
                     <th>Due Date</th>
                     <th>Description</th>
                     <th>
-                        <form method="get" class="mb-3 d-flex align-items-center">
-                            <label>Status</label>
+                        <form method="get" class="d-flex align-items-center">
+                            <label>Filter by Status</label>
                             <!-- Filter by status -->
                             <select name="status" class="form-select w-auto" onchange="this.form.submit()">
                                 <!-- Render options with if statement , based on the status  -->
-                                <option value=""> Select The Status </option>
+                                <option value=""> All Tasks </option>
 
                                 @if (Model.Status == "Open")
                                 {
