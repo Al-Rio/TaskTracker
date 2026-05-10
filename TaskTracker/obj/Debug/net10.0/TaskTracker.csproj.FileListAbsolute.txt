@@ -212,4 +212,4 @@
 /workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/TaskTracker.pdb
 /workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/TaskTracker.genruntimeconfig.cache
 /workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/ref/TaskTracker.dll
-/workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/compressed/r2kr2md7s5-{0}-11bs84h0m0-11bs84h0m0.gz
+/workspaces/TaskTracker/TaskTracker/obj/Debug/net10.0/compressed/r2kr2md7s5-{0}-j6o3zu6ngv-j6o3zu6ngv.gz

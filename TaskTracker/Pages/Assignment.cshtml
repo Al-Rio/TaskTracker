@@ -36,7 +36,8 @@
     <div class="form-group col-md-3">
         <!-- Label and input for the Due Date with validation message -->
         <label asp-for="Input.DueDate" class="form-label">Due Date *</label>
-        <input asp-for="Input.DueDate" type="date" class="form-control" />
+        <!-- Placeholder of mm-dd-yyyy with today date in the calender -->
+        <input asp-for="Input.DueDate" type="date" class="form-control" value="@DateOnly.FromDateTime(DateTime.Today)"/>
         <span asp-validation-for="Input.DueDate" class="text-danger"></span>
     </div>
     <div class="form-group col-12">
@@ -63,7 +64,7 @@
 <!-- Display the list of Assignments in a table format -->
 <div class="container">
     <div class="card padd">
-        <table class="table table-striped">
+        <table class="table table-responsive-md table-striped">
             <thead>
                 <tr>
                     <th>Id</th>
